@@ -1,2 +1,1 @@
-# Django_project
-college management system
+# College Management System
