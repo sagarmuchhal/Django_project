@@ -1,4 +1,5 @@
 /********** Template CSS **********/
+
 :root {
     --primary: #06BBCC;
     --light: #F0FBFC;
@@ -23,6 +24,7 @@
 
 
 /*** Spinner ***/
+
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -38,6 +40,7 @@
 
 
 /*** Button ***/
+
 .btn {
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
@@ -77,6 +80,7 @@
 
 
 /*** Navbar ***/
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -101,11 +105,10 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
+    .navbar-light .navbar-nav .nav-link {
         margin-right: 0;
         padding: 10px 0;
     }
-
     .navbar-light .navbar-nav {
         border-top: 1px solid #EEEEEE;
     }
@@ -134,13 +137,11 @@
         visibility: hidden;
         transition: .5s;
     }
-
     .navbar .dropdown-menu.fade-down {
         top: 100%;
         transform: rotateX(-75deg);
         transform-origin: 0% 0%;
     }
-
     .navbar .nav-item:hover .dropdown-menu {
         top: 100%;
         transform: rotateX(0deg);
@@ -152,12 +153,12 @@
 
 
 /*** Header carousel ***/
+
 @media (max-width: 768px) {
     .header-carousel .owl-carousel-item {
         position: relative;
         min-height: 500px;
     }
-    
     .header-carousel .owl-carousel-item img {
         position: absolute;
         width: 100%;
@@ -197,7 +198,7 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(../img/carousel-1.jpg);
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(../img/download_6.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -207,12 +208,13 @@
     background: rgba(15, 23, 43, .7);
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
     color: var(--light);
 }
 
 
 /*** Section Title ***/
+
 .section-title {
     position: relative;
     display: inline-block;
@@ -253,6 +255,7 @@
 
 
 /*** Service ***/
+
 .service-item {
     background: var(--light);
     transition: .5s;
@@ -273,6 +276,7 @@
 
 
 /*** Categories & Courses ***/
+
 .category img,
 .course-item img {
     transition: .5s;
@@ -285,6 +289,7 @@
 
 
 /*** Team ***/
+
 .team-item img {
     transition: .5s;
 }
@@ -295,6 +300,7 @@
 
 
 /*** Testimonial ***/
+
 .testimonial-carousel::before {
     position: absolute;
     content: "";
@@ -368,6 +374,7 @@
 
 
 /*** Footer ***/
+
 .footer .btn.btn-social {
     margin-right: 5px;
     width: 35px;

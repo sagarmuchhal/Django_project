@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 from django.shortcuts import HttpResponseRedirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import Contact_us
+from .models import Contact_us,Gallery,Staff
 
 
 # Create your views here.
@@ -33,7 +33,11 @@ def signup(request):
         return render(request, 'signup.html', {'form':form})
     
 def home(request):
-    return render(request,'index.html')
+    if request.method == 'GET':
+        staffs = Staff.objects.all()
+        return render(request,'index.html',
+                {'view_staff':staffs})
+    
 
 def signin(request):
     if request.user.is_authenticated:
@@ -45,7 +49,7 @@ def signin(request):
         password = request.POST['password']
         print("11111111111111111111111111111111111")
         print(password)
-        print("11111111111111111111111111111111111", password[0])
+
         user = authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
@@ -67,7 +71,10 @@ def signout(request):
     return redirect('/')
 
 def about_url(request):
-    return render(request,'about.html')
+     if request.method == 'GET':
+        staffs = Staff.objects.all()
+        return render(request,'about.html',
+                {'view_staff':staffs})
     
 
 def client_contact(request):
@@ -78,35 +85,26 @@ def client_contact(request):
         email=str(request.POST['email'])
         phone_number=str(request.POST['phone_number'])
         message=str(request.POST['message'])
-
         task = Contact_us(name=name,email=email,phone_number=phone_number,message=message)
         task.save()
 
     return render(request, 'contact.html')
 
 
-def display_staff(request):
-    if request.method == 'GET':
-        staffs = Staff.objects.all()
-        print(staffs.name)
-        return render(request,'index.html',
-                {'view_staff':staffs})
-
-
 def courses_url(request):
     return render(request,'courses.html')
 
-# def showform(request):
-#     # en=contact_u(name=request.POST.get('name'),cl=request.POST.get('class'),
-#     #  mark=request.POST.get('mark'),gender=request.POST.get('gender'))
-#     # en.save()
-#     # str1="Data inserted to student table" 
-#     # return render(request,'signup_student.html',{'msg':str1})
-#     form= FormContactForm(request.POST or None)
-#     if form.is_valid():
-#         print(112237846)
-#         form.save()
-#     print(89670998)
-#     context= {'form': form }
-        
-#     return render(request, 'contact.html', context)
+
+def display_gellery(request):
+ 
+    if request.method == 'GET':
+        Gallerys = Gallery.objects.all()
+        return render(request, 'display_gallery.html',
+                    {'gallery_images': Gallerys})
+    
+    
+def display_staff(request):
+    if request.method == 'GET':
+        staffs = Staff.objects.all()
+        return render(request,'team.html',
+                {'view_staff':staffs})
