@@ -85,6 +85,14 @@ def client_contact(request):
     return render(request, 'contact.html')
 
 
+def display_staff(request):
+    if request.method == 'GET':
+        staffs = Staff.objects.all()
+        print(staffs.name)
+        return render(request,'index.html',
+                {'view_staff':staffs})
+
+
 def courses_url(request):
     return render(request,'courses.html')
 
