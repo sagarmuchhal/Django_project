@@ -36,7 +36,7 @@ class Staff(models.Model):
     name = models.CharField(max_length=30)
     email =  models.EmailField(max_length=254)
     phone_number = models.CharField(max_length=12)
-    exp  = models. DateTimeField (null=True)
+    exp  = models. DateTimeField(null=True, blank=True)
     photo = models.ImageField(upload_to ='uploads/')
     class Meta:
         db_table="Staff"
