@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models import Model
 from django.shortcuts import render
 # from .forms import FormContactForm
+from django.utils.timezone import datetime #important if using timezones
+
 
 
 # Create your models here.
@@ -30,13 +32,14 @@ class Students(models.Model):
     class Meta:
         db_table = "Student"
 
+today = datetime.today()
 
 class Staff(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
     email =  models.EmailField(max_length=254)
-    phone_number = models.CharField(max_length=12)
-    exp  = models. DateTimeField(null=True, blank=True)
+    phone_number = models.CharField(max_length=10)
+    exp  = models.DateTimeField(null=True, blank=True)
     photo = models.ImageField(upload_to ='uploads/')
     class Meta:
         db_table="Staff"

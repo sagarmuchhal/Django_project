@@ -10,65 +10,20 @@ from django.template import loader
 from .models import Contact_us,Gallery,Staff
 
 
-# Create your views here.
-def signup(request):
-    # if request.user.is_authenticated:
-    #     return redirect('/')
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        print(form)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username = username,password=password)
-            login(request,user)
-            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-
-            return redirect('/')
-        else:
-            return render(request, 'signup.html', {'form':form})
-    else: 
-        form = UserCreationForm()
-        return render(request, 'signup.html', {'form':form})
-    
 def home(request):
     if request.method == 'GET':
         staffs = Staff.objects.all()
         return render(request,'index.html',
                 {'view_staff':staffs})
     
-
 def signin(request):
-    if request.user.is_authenticated:
-        return render(request,'home.html')
-    if request.method == 'POST':
-        username = request.POST['username']
-        print(request.POST)
-        print("11111111111111111111111111111111111")
-        password = request.POST['password']
-        print("11111111111111111111111111111111111")
-        print(password)
+    # Your view logic here
+    pass     
 
-        user = authenticate(request,username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('/profile')
-        else:
-            msg = 'Error in login'
-            form = AuthenticationForm(request.POST)
-            return render(request,'login.html',{'form':form,'msg':msg})
-    else: 
-        form = AuthenticationForm()
-        return render(request, 'login.html', {'form':form})
-            
 def profile(request):
     return render(request,'profile.html')
 
 
-def signout(request):
-    logout(request)
-    return redirect('/')
 
 def about_url(request):
      if request.method == 'GET':
